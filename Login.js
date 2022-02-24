@@ -18,6 +18,7 @@ const UselessTextInput = () => {
       />
       <View>
       <Button
+      style={styles.btn}
       title="send otp"
       onPress={() => fetch('https://dev.stedi.me/twofactorlogin/'+phone, {method: 'post'}) }
       />
@@ -32,10 +33,14 @@ const UselessTextInput = () => {
       <View>
       <Button
       title="Login"
+      style={styles.btn}
       onPress={() => {
-        fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'post'})
-        // console.log 
-        // const data.log = fetch;
+        fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'post',  
+        body: JSON.stringify({
+          phoneNumber: phone,
+          oneTimePasscode: number
+        })}).then((response) => console.log(response.text()));
+         
       } }
       />
     </View>
@@ -51,6 +56,15 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+
+  
+  },
+  btn: { 
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+
   },
 });
 
