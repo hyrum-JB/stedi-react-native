@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, TextInput, Button, Alert, Text, TouchableOpac
 import { Accelerometer } from 'expo-sensors';
 
 //input
+//const setUserLoggedIn = (props) => {
 const UselessTextInput = () => {
   const [phone, onChangePhoneNumber] = React.useState(null);
   const [number, onChangeOTP] = React.useState(null);
@@ -34,14 +35,15 @@ const UselessTextInput = () => {
       <Button
       title="Login"
       style={styles.btn}
-      onPress={() => {
-        fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'post',  
-        body: JSON.stringify({
-          phoneNumber: phone,
-          oneTimePasscode: number
-        })}).then((response) => console.log(response.text()));
+      //onPress={() => {props.setUserLoggedIn(true)}}
+       onPress={() => {
+          fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'post',  
+          body: JSON.stringify({
+            phoneNumber: phone,
+            oneTimePasscode: number
+          })}).then((response) => console.log(response.text()));
          
-      } }
+       } }
       />
     </View>
     </SafeAreaView>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
   
   },
   btn: { 
-    height: 40,
+    height: 30,
     margin: 12,
     borderWidth: 1,
     padding: 10,
@@ -68,4 +70,5 @@ const styles = StyleSheet.create({
   },
 });
 
+//export default setUserLoggedIn;
 export default UselessTextInput;
