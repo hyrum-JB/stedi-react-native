@@ -19,3 +19,16 @@ function Setting() {
   }
 
 export default Setting;
+
+// function setUserLoggedIn(props) {
+//   return(
+//     <View>
+//     <Button
+//     title="Log out"
+//     onPress={props.setUserLoggedIn(false)}
+//   />
+//     </View>
+//   )
+// }
+
+// export default setUserLoggedIn;

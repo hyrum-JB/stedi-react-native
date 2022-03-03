@@ -37,13 +37,23 @@ const UselessTextInput = () => {
       style={styles.btn}
       //onPress={() => {props.setUserLoggedIn(true)}}
        onPress={() => {
-          fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'post',  
+          fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'POST',  
           body: JSON.stringify({
             phoneNumber: phone,
             oneTimePasscode: number
-          })}).then((response) => console.log(response.text()));
-         
-       } }
+          })}).then((response) => response.text()) 
+          .then((result) => {
+
+            //console.log(result());
+       
+             if(result.message === 'SUCCESS'){
+               {props.setUserLoggedIn(true)}
+              } else {
+                  alert('Please check your login information.');
+              }
+           });
+         }
+       }
       />
     </View>
     </SafeAreaView>
@@ -62,6 +72,9 @@ const styles = StyleSheet.create({
   
   },
   btn: { 
+    flexDirection: 'row',
+    color: "#841584",
+    width: '50%', 
     height: 30,
     margin: 12,
     borderWidth: 1,
