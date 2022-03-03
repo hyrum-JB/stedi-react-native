@@ -37,16 +37,16 @@ const UselessTextInput = () => {
       style={styles.btn}
       //onPress={() => {props.setUserLoggedIn(true)}}
        onPress={() => {
-          fetch('https://dev.stedi.me/twofactorlogin/' ,{method: 'POST',  
+          fetch('https://dev.stedi.me/twofactorlogin' ,{method: 'POST',  
           body: JSON.stringify({
             phoneNumber: phone,
-            oneTimePasscode: number
+            oneTimePassword: number
           })}).then((response) => response.text()) 
           .then((result) => {
 
-            //console.log(result());
+            console.log(result());
        
-             if(result.message === 'SUCCESS'){
+             if(result === 'SUCCESS'){
                {props.setUserLoggedIn(true)}
               } else {
                   alert('Please check your login information.');
