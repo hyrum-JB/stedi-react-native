@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, TextInput, Button, Alert, Text, TouchableOpacity, View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
-//input
-//const setUserLoggedIn = (props) => {
-const UselessTextInput = () => {
+const Login = (props) => {
   const [phone, onChangePhoneNumber] = React.useState(null);
   const [number, onChangeOTP] = React.useState(null);
 
@@ -41,19 +39,21 @@ const UselessTextInput = () => {
           body: JSON.stringify({
             phoneNumber: phone,
             oneTimePassword: number
-          })}).then((response) => response.text()) 
-          .then((result) => {
-
-            console.log(result());
-       
-             if(result === 'SUCCESS'){
-               {props.setUserLoggedIn(true)}
-              } else {
-                  alert('Please check your login information.');
+          })})
+          .then((response) => {//{return response.status})
+          //.then((status) => {
+            //console.log(status)
+                 
+              if(response.status == 200){
+                props.setUserLoggedIn(true)
+               }
+              else{
+                alert('Please check your login information.');
               }
-           });
-         }
-       }
+            });
+          }
+        }
+          
       />
     </View>
     </SafeAreaView>
@@ -83,5 +83,5 @@ const styles = StyleSheet.create({
   },
 });
 
-//export default setUserLoggedIn;
-export default UselessTextInput;
+export default Login;
+//export default UselessTextInput;

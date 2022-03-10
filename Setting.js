@@ -7,12 +7,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 
 
-function Setting() {
+function Setting(props) {
     return(
       <View>
       <Button
-      title="Log In"
-      onPress={() => Alert.alert('login Button pressed')}
+      title="Log Out"
+      onPress={() => props.setUserLoggedIn(false)}
     />
       </View>
     )
@@ -20,15 +20,3 @@ function Setting() {
 
 export default Setting;
 
-// function setUserLoggedIn(props) {
-//   return(
-//     <View>
-//     <Button
-//     title="Log out"
-//     onPress={props.setUserLoggedIn(false)}
-//   />
-//     </View>
-//   )
-// }
-
-// export default setUserLoggedIn;

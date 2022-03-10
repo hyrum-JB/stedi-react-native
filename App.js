@@ -3,12 +3,12 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Counter from './Counter.js';
-import SettingsScreen from './Login.js';
+import SettingsScreen from './SettingsScreen.js';
 import Home from './Home.js';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Login from './Login';
+import Login from './Login.js';
 
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
@@ -29,7 +29,8 @@ export default function App() {
       >
         <Tab.Screen
           name='Home'
-          component={Home}
+          children = {() => <Home setUserLoggedIn={setUserLoggedIn}/>}
+          //component={Home}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
