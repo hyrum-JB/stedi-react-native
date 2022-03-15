@@ -3,13 +3,13 @@ import { StyleSheet, Text, View, Image, Alert } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-//inputcode
 
 
 
 function Setting(props) {
     return(
       <View>
+        <Text> welcome: {props.userEmail} </Text>
       <Button
       title="Log Out"
       onPress={() => props.setUserLoggedIn(false)}

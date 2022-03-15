@@ -41,15 +41,32 @@ const Login = (props) => {
             oneTimePassword: number
           })})
           .then((response) => {//{return response.status})
-          //.then((status) => {
-            //console.log(status)
-                 
-              if(response.status == 200){
+          
+           const statuscode = response.status
+           const data = response.text() 
+           return Promise.all([statuscode, data])
+          })
+          .then(([response, data])  =>{              
+              if(response == 200){
                 props.setUserLoggedIn(true)
-               }
+                console.log(data)
+                //.then((response) => { result}
+                fetch('https://dev.stedi.me/validate/'+data)
+                .then((emailResponse)=> {
+                  const useradress = emailResponse.text()
+                  return useradress
+                })
+                .then((email)=>{
+                  console.log(email)
+                  props.setUserEmail(email)
+                })
+                
+              }
               else{
                 alert('Please check your login information.');
               }
+
+
             });
           }
         }
