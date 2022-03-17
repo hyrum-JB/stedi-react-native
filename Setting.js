@@ -9,7 +9,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 function Setting(props) {
     return(
       <View>
-        <Text> welcome: {props.userEmail} </Text>
+        <Text style={styles.input}>
+           welcome: {props.userEmail} </Text>
       <Button
       title="Log Out"
       onPress={() => props.setUserLoggedIn(false)}
@@ -18,5 +19,10 @@ function Setting(props) {
     )
   }
 
+  const styles = StyleSheet.create({
+    input: {
+      paddingTop: 100,
+    },
+  });
 export default Setting;
 

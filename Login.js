@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, TextInput, Button, Alert, Text, TouchableOpacity, View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
+import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 
 const Login = (props) => {
   const [phone, onChangePhoneNumber] = React.useState(null);
   const [number, onChangeOTP] = React.useState(null);
 
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.page}>
       <TextInput
         style={styles.input}
         onChangeText={onChangePhoneNumber}
@@ -15,9 +17,8 @@ const Login = (props) => {
         placeholder="phone number"
         keyboardType="numeric"
       />
-      <View>
-      <Button
-      style={styles.btn}
+      <View style={styles.container}>
+      <Button style={styles.btn}
       title="send otp"
       onPress={() => fetch('https://dev.stedi.me/twofactorlogin/'+phone, {method: 'post'}) }
       />
@@ -29,10 +30,9 @@ const Login = (props) => {
         placeholder="one time passcode"
         keyboardType="numeric"
       />
-      <View>
-      <Button
+      <View style={styles.container}>
+      <Button style={styles.btn}
       title="Login"
-      style={styles.btn}
       //onPress={() => {props.setUserLoggedIn(true)}}
        onPress={() => {
           fetch('https://dev.stedi.me/twofactorlogin' ,{method: 'POST',  
@@ -80,24 +80,38 @@ const Login = (props) => {
 };
 
 const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+  },
+
   input: {
+    alignItems: 'center',
     height: 40,
-    margin: 12,
+    margin: 20,
     borderWidth: 1,
     padding: 10,
 
   
   },
-  btn: { 
-    flexDirection: 'row',
-    color: "#841584",
-    width: '50%', 
-    height: 30,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  container: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
 
   },
+
+  btn: { 
+    //flexDirection: "row",
+    alignItems: 'center',
+    width: 90, 
+    height: 40,
+    //borderWidth: 1,
+    
+
+  },
+
 });
 
 export default Login;
