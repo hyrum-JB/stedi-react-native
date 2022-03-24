@@ -10,6 +10,8 @@ const Login = (props) => {
 
   return (
     <SafeAreaView style={styles.page}>
+      <Text style={styles.textTitle}>STEDI Balance </Text>
+      <Text style={styles.text}>Login </Text>
       <TextInput
         style={styles.input}
         onChangeText={onChangePhoneNumber}
@@ -82,7 +84,7 @@ const Login = (props) => {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     paddingHorizontal: 10,
   },
 
@@ -92,14 +94,11 @@ const styles = StyleSheet.create({
     margin: 20,
     borderWidth: 1,
     padding: 10,
-
-  
   },
   container: {
     justifyContent: 'center',
     textAlign: 'center',
     alignItems: 'center',
-
   },
 
   btn: { 
@@ -107,10 +106,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 90, 
     height: 40,
-    //borderWidth: 1,
-    
+    },
 
-  },
+  textTitle: {
+    paddingTop: 150,
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: '600',
+    fontSize: 30
+    },
+    text: {
+      paddingTop: 30,
+      textAlign: 'center',
+      color: 'black',
+      fontWeight: '600',
+      fontSize: 25
+      },
 
 });
 

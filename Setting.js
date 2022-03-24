@@ -21,6 +21,7 @@ function Setting(props) {
 
   const styles = StyleSheet.create({
     input: {
+      color: 'white',
       paddingTop: 100,
     },
   });
